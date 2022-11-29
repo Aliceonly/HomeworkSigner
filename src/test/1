@@ -1,0 +1,25 @@
+<!DOCTYPE html><html>	<head>		<meta charset="utf-8">		<title>邮箱验证测试</title>		<script src="../js/jquery-3.6.0.min.js"></script>		<script src="../js/axios.js"></script>		<script>			function register(){ 				axios.post("http://localhost:8090/fkxinli/register", $("#f1").serialize())							.then(function(result){ 							console.log(result.data)				})			}			function register1(){ 				$.ajax({  //发起Ajax请求数据					type: "POST", //POST隐藏请求自带的数据,get显示请求自带的数据					url: "http://localhost:8080/fkxinli/register", //要使用的请求路径					//contentType: "application/json;charset=utf-8",					data:$("#f1").serialize(),					success: function(data) {  //成功时的方案						document.write(data);					},					error: function(data) { 						//alert("返回失败");						//console.log("注册失败");											}				})			}			function sendEmail(){
+ 				$.ajax({  //发起Ajax请求数据
+ 				type: "POST", //POST隐藏请求自带的数据,get显示请求自带的数据
+ 				url: "http://localhost:8090/email/sendEmail", //要使用的请求路径
+ 				//contentType: "application/json;charset=utf-8",
+ 				data:$("#f1").serialize(),
+ 				success: function(data) {
+ 				  //成功时的方案
+ 				  alert(data);
+ 				  },
+ 				  error: function(data)
+ 				  { 						//
+ 				  alert("返回失败");
+ 				  //console.log("注册失败");
+ 				  }				})			}			function verificationEmail(){ 				$.ajax({  //发起Ajax请求数据					type: "POST", //POST隐藏请求自带的数据,get显示请求自带的数据					url: "http://localhost:8090/email/verificationEmail", //要使用的请求路径					//contentType: "application/json;charset=utf-8",					data:$("#f1").serialize(),					success: function(data) {  //成功时的方案						alert(data);					},					error: function(data) { 						//alert("返回失败");						//console.log("注册失败");					}				})			}			<!--返回首页-->			function returnfrontpage(){ 				window.open("../1-homepage/frontpage.html")			}		</script>	</head>	<body>		<h1 align="center">邮箱验证测试</h1>
+ 				  <form  id="f1">
+ 				  			<table align="center">
+ 				  							<tr>
+ 				  							<td>电子邮箱：</td>
+ 				  							<td>
+ 				  							<input type="email" name="eml" placeholder="请输入电子邮箱"/>
+ 				  							<input type="button" value="发送验证码" onclick="sendEmail()" />
+ 				  								</td>				</tr>								<tr>
+ 				  													<td>邮箱验证码：</td>
+ 				  																	<td>						<input type="text" name="userVerificationCode" placeholder="请输入邮箱验证码"/>						<input type="button" value="验证--邮箱发送的验证码" onclick="verificationEmail()" />					</td>				</tr>							</table>					</form>	</body></html>

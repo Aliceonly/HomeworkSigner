@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" cellspacing="0">
+    <tr>
+        <th>id</th>
+        <th>联系人姓名</th>
+        <th>联系人地址</th>
+    </tr>
+
+    <tr th:each="t,s : ${list}" border="1" cellspacing="0">
+        <td th:text="${list.get(s.index).userid}">id</td>
+        <td th:text="${list.get(s.index).username}">name</td>
+        <td th:text="${list.get(s.index).address}">address</td>
+    </tr>
+
+    <a href="/dem0" title="" >上一页</a>
+    <span>  </span>
+    <a href="/deno" title="" >下一页</a>
+    <span>  </span>
+    <a href="/index" title="" target="_blank">退出登录</a>
+</table>
+</body>
+</html>

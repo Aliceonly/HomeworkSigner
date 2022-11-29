@@ -9,6 +9,6 @@
 ③展现一个分页数据。
 
 未实现：
-使用mybatis-plus分页
+使用mybatis-plus
 注册邮箱伪验证
 角色菜单

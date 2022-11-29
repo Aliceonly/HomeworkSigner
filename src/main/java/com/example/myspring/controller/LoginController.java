@@ -44,6 +44,7 @@ public class LoginController {
             CheckPermissionInterceptor.addPermisstion("user:login");
             return "success";
         }else {
+            CheckPermissionInterceptor.delPermisstion("user:login");
             return "error";
         }
     }
@@ -62,8 +63,10 @@ public class LoginController {
     @RequestMapping(value = "/ElogIn",method = RequestMethod.POST)
     public String Elogin(String code){
         if(code.equals(MailUtils.CODE)){
+            CheckPermissionInterceptor.addPermisstion("user:login");
             return "success";
         }else {
+            CheckPermissionInterceptor.delPermisstion("user:login");
             return "error";
         }
     }
@@ -81,6 +84,7 @@ public class LoginController {
             userBean = userService.LoginIn(name, password);
             if (userBean==null){
                 MailUtils.sendMail(email);
+                CheckPermissionInterceptor.addPermisstion("user:login");
                 userService.Insert(name, password, email);
                 return "coding";
             }else{
